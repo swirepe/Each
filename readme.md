@@ -13,6 +13,7 @@ It allows you to specify a name for a file as you iterate through them.  Think o
 For those times when you have a command that can't take in a glob.  It can run commands in series or parallel.
 
     each markdownFile in *.md :: convertToHTML markdownFile
+    each experiment in *.settings ++ runBigExperiment experiment
 
 
 ## Help
