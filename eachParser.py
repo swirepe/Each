@@ -1,6 +1,8 @@
 from glob import glob
+verbose = False
 
 def parse(args):
+	global verbose
 	if not ("::" in args or "++" in args):
 		raise ValueError("Expectd :: or ++")
 
@@ -34,10 +36,11 @@ def getOpIndex(args):
 
 
 def getFiles(args):
+	global verbose
 	if "in" in args:
 		in_index = args.index("in")
 	else:
-		in_index = 0
+		in_index = -1
 
 
 	op_index = getOpIndex(args)
@@ -46,7 +49,13 @@ def getFiles(args):
 	for f in args[in_index+1:op_index]:
 		flist.extend(glob(f))
 
+
+	if verbose:
+		for f in flist:
+			print "[EACH] Found file", f
+
 	return flist
+
 
 def getCmd(args):
 	op_index = getOpIndex(args)
