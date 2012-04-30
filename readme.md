@@ -16,6 +16,18 @@ For those times when you have a command that can't take in a glob.  It can run c
     each experiment in *.settings ++ runBigExperiment experiment
 
 
+## Why not use what is build into cmd?
+
+For example, %F is the current file.  You can do something like
+
+    for %F in (*.txt) do some_command %F
+
+
+The `each` command lets you do that in parallel, if you so choose.  If you don't have access to xargs or gnu parallel, perhaps you have access to this?
+
+Update: I just learned about [forfiles.](http://blog.ringerc.id.au/2011/12/windows-command-line-survival-findfiles.html)  That may work for you, too.
+
+
 ## Help
 
 	 each: an iterator for files
